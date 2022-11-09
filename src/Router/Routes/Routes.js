@@ -2,6 +2,7 @@ import { createBrowserRouter } from 'react-router-dom';
 import Main from '../../Layout/Main';
 import Home from '../../Pages/Home/Home/Home';
 import Login from '../../Pages/Login/Login';
+import PageNotFound from '../../Pages/PageNotFound/PageNotFound';
 import ServiceDetails from '../../Pages/ServiceDetails/ServiceDetails';
 import SignUp from '../../Pages/SignUp/SignUp';
 const router = createBrowserRouter([
@@ -35,6 +36,10 @@ const router = createBrowserRouter([
         ]
 
 
+    },
+     {
+        path: "*",
+        element: < PageNotFound />
     }
 ])
 export default router;
