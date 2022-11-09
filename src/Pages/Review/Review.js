@@ -28,7 +28,7 @@ const Review = () => {
         .then((data) => {
           if (data.deletedCount > 0) {
             alert("deleted successfully");
-            const remaining = review.filter((odr) => odr._id !== id);
+            const remaining = review.filter((rvw) => rvw._id !== id);
             setReview(remaining);
           }
         });
