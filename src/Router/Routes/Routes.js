@@ -4,6 +4,7 @@ import Blog from '../../Pages/Blog/Blog';
 import Home from '../../Pages/Home/Home/Home';
 import Login from '../../Pages/Login/Login';
 import PageNotFound from '../../Pages/PageNotFound/PageNotFound';
+import Review from '../../Pages/Review/Review';
 import ServiceDetails from '../../Pages/ServiceDetails/ServiceDetails';
 import SignUp from '../../Pages/SignUp/SignUp';
 const router = createBrowserRouter([
@@ -36,7 +37,11 @@ const router = createBrowserRouter([
              {
                 path: '/blog',
                 element: <Blog></Blog>
-            }
+            },
+             {
+                path: '/review',
+                element: <Review></Review>
+            },
 
         ]
 
