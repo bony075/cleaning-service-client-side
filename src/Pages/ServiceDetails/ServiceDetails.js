@@ -1,6 +1,7 @@
 import React, { useContext } from "react";
 import { useLoaderData } from "react-router-dom";
 import { AuthContext } from "../../context/AuthProvider/AuthProvider";
+import Review from "../Review/Review";
 
 const ServiceDetails = () => {
   const { _id, title, price, img, description } = useLoaderData();
@@ -56,7 +57,10 @@ const ServiceDetails = () => {
             <div className="card-actions justify-end"></div>
           </div>
         </div>
-      </div>
+          </div>
+          {/* <div>
+              <Review></Review>
+          </div> */}
       <div>
         <form onSubmit={handlePlaceOrder}>
           <h2 className="text-4xl">You are about to order: {title}</h2>
