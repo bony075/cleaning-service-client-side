@@ -6,16 +6,25 @@ import ReviewRow from "./ReviewRow";
 const Review = () => {
   const { user, logOut } = useContext(AuthContext);
   const [review, setReview] = useState([]);
-useTitle('Review')
+  useTitle("Review");
   useEffect(() => {
-    fetch(`http://localhost:5000/review?email=${user?.email}`)
+    fetch(`http://localhost:5000/review?email=${user?.email}`, {
+      headers: {
+        authorization: `Bearer ${localStorage.getItem(
+          "cleaningService-token"
+        )}`,
+      },
+    })
       .then((res) => {
+        if (res.status === 401 || res.status === 403) {
+          return logOut();
+        }
         return res.json();
       })
       .then((data) => {
         setReview(data);
       });
-  }, [user?.email]);
+  }, [user?.email, logOut]);
   //delete
   const handleDelete = (id) => {
     const proceed = window.confirm(
