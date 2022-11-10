@@ -1,4 +1,5 @@
 import React, { useContext } from "react";
+import toast from "react-hot-toast";
 
 import { Link } from "react-router-dom";
 import { AuthContext } from "../../context/AuthProvider/AuthProvider";
@@ -6,20 +7,41 @@ import useTitle from "../../Hook/useTitle";
 
 const SignUp = () => {
   useTitle("Register");
-  const { createUser } = useContext(AuthContext);
+  const { createUser, updateUserProfile } = useContext(AuthContext);
+
   const handleSignUp = (event) => {
     event.preventDefault();
     const form = event.target;
+    const name = form.name.value;
+    const photoURL = form.photoURL.value;
     const email = form.email.value;
     const password = form.password.value;
+    console.log(name, photoURL, email, password);
+
     createUser(email, password)
       .then((result) => {
         const user = result.user;
         console.log(user);
+        toast.success("Thanks for register");
+        form.reset();
+        //    setError("");
+        handelupdateUserProfile(name, photoURL);
       })
+      .catch((error) => {
+        // console.error('dfsjdfhjsdfhjksdfhsdfh', error.message)
+        //    setError(error.message);
+        console.log("dsfsfsf", error);
+      });
+  };
+  const handelupdateUserProfile = (name, photoURL) => {
+    const profile = {
+      displayName: name,
+      photoURL: photoURL,
+    };
+    updateUserProfile(profile)
+      .then(() => {})
       .catch((e) => console.error(e));
   };
-
   return (
     <div className="hero w-full my-20">
       <div className="hero-content grid gap-20 md:grid-cols-2 flex-col lg:flex-row">
@@ -37,6 +59,17 @@ const SignUp = () => {
                 type="text"
                 name="name"
                 placeholder="Your Name"
+                className="input input-bordered"
+              />
+            </div>
+            <div className="form-control">
+              <label className="label">
+                <span className="label-text">PhotoURL</span>
+              </label>
+              <input
+                type="text"
+                name="photoURL"
+                placeholder="Type your PhotoURL"
                 className="input input-bordered"
               />
             </div>
