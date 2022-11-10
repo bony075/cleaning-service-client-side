@@ -22,10 +22,10 @@ const AuthProvider = ({ children }) => {
         return signInWithEmailAndPassword(auth, email, password);
     }
 
-    // const logOut = () => {
-    //     localStorage.removeItem('cleaning-token');
-    //     return signOut(auth);
-    // }
+    const logOut = () => {
+        localStorage.removeItem('cleaning-token');
+        return signOut(auth);
+    }
 
     useEffect(() => {
         const unsubscribe = onAuthStateChanged(auth, currentUser => {
@@ -44,7 +44,7 @@ const AuthProvider = ({ children }) => {
         loading,
         createUser,
         login,
-        
+        logOut,
     }
 
     return (
