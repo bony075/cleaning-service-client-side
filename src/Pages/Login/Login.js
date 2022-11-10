@@ -40,7 +40,7 @@ const Login = () => {
         console.log(currentUser);
 
         //jwt
-        fetch("http://localhost:5000/jwt", {
+        fetch("https://cleaning-service-server-sable.vercel.app/jwt", {
           method: "POST",
           headers: {
             "content-type": "application/json",

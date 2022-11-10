@@ -4,7 +4,7 @@ import useTitle from "../../Hook/useTitle";
 
 const AddService = () => {
   const { user } = useContext(AuthContext);
-  useTitle('Add Service');
+  useTitle("Add Service");
   const handleAddReview = (event) => {
     event.preventDefault();
     const form = event.target;
@@ -25,7 +25,7 @@ const AddService = () => {
       description,
     };
 
-    fetch("http://localhost:5000/services", {
+    fetch("https://cleaning-service-server-sable.vercel.app/services", {
       method: "POST",
       headers: {
         "content-type": "application/json",
@@ -49,7 +49,7 @@ const AddService = () => {
       <h1 className="text-4xl font-bold text-center underline underline-offset-8 mb-8">
         ADD NEW SERVICE
       </h1>
-      <form onSubmit={handleAddReview} className='w-2/3 mx-auto'>
+      <form onSubmit={handleAddReview} className="w-2/3 mx-auto">
         {/* <h2 className="text-4xl">You are about to order: {title}</h2>
           <h4 className="text-3xl">Price: {price}</h4> */}
         <div className="grid grid-cols-1  gap-4">

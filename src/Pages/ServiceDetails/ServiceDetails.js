@@ -13,7 +13,7 @@ const ServiceDetails = () => {
     event.preventDefault();
     const form = event.target;
     // const name = `${form.firstName.value} ${form.lastName.value}`;
-    const name = user?.name||"No name";
+    const name = user?.name || "No name";
     const email = user?.email || "unregistered";
     // const phone = form.phone.value;
     const message = form.message.value;
@@ -28,7 +28,7 @@ const ServiceDetails = () => {
       message,
     };
 
-    fetch("http://localhost:5000/review", {
+    fetch("https://cleaning-service-server-sable.vercel.app/review", {
       method: "POST",
       headers: {
         "content-type": "application/json",
@@ -60,13 +60,13 @@ const ServiceDetails = () => {
           </div>
         </div>
       </div>
-      {/* <div>
-              <Review></Review>
-          </div> */}
+      {}
       <div className="my-8">
-        
         {user?.uid ? (
           <>
+            <div>
+              <Review></Review>
+            </div>
             <form onSubmit={handleSetReview}>
               {/* <h2 className="text-4xl">You are about to order: {title}</h2>
           <h4 className="text-3xl">Price: {price}</h4> */}
@@ -118,8 +118,8 @@ const ServiceDetails = () => {
             </form>
           </>
         ) : (
-            <>
-              <p>Please Login to Submit review...  </p>
+          <>
+            <p>Please Login to Submit review... </p>
             <NavLink className="btn btn-primary" to="/login">
               Login
             </NavLink>

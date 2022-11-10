@@ -80,7 +80,7 @@ const Header = () => {
       <div className="navbar-center hidden lg:flex">
         <ul className="menu menu-horizontal p-0 font-semibold">{menuItem}</ul>
       </div>
-      <div className="navbar-end">
+      <div className="navbar-end ">
         {user?.uid ? (
           <>
             <p>{user?.displayName}</p>

@@ -8,13 +8,16 @@ const Review = () => {
   const [review, setReview] = useState([]);
   useTitle("Review");
   useEffect(() => {
-    fetch(`http://localhost:5000/review?email=${user?.email}`, {
-      headers: {
-        authorization: `Bearer ${localStorage.getItem(
-          "cleaningService-token"
-        )}`,
-      },
-    })
+    fetch(
+      `https://cleaning-service-server-sable.vercel.app/review?email=${user?.email}`,
+      {
+        headers: {
+          authorization: `Bearer ${localStorage.getItem(
+            "cleaningService-token"
+          )}`,
+        },
+      }
+    )
       .then((res) => {
         if (res.status === 401 || res.status === 403) {
           return logOut();
@@ -31,7 +34,7 @@ const Review = () => {
       "Are you sure, you want to delete this service"
     );
     if (proceed) {
-      fetch(`http://localhost:5000/review/${id}`, {
+      fetch(`https://cleaning-service-server-sable.vercel.app/review/${id}`, {
         method: "DELETE",
       })
         .then((res) => res.json())
@@ -46,7 +49,7 @@ const Review = () => {
   };
 
   return (
-    <div className='text-center'>
+    <div className="text-center">
       <h2 className="text-5xl">You have {review.length} review</h2>
       <div className="overflow-x-auto w-full">
         <table className="table w-full">

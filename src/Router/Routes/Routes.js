@@ -40,7 +40,9 @@ const router = createBrowserRouter([
         path: "/servicedetails/:id",
         element: <ServiceDetails></ServiceDetails>,
         loader: ({ params }) =>
-          fetch(`http://localhost:5000/services/${params.id}`),
+          fetch(
+            `https://cleaning-service-server-sable.vercel.app/services/${params.id}`
+          ),
       },
       {
         path: "/blog",
@@ -48,11 +50,11 @@ const router = createBrowserRouter([
       },
       {
         path: "/review",
-        element: 
+        element: (
           <PrivateRoute>
             <Review></Review>
           </PrivateRoute>
-        ,
+        ),
       },
     ],
   },
