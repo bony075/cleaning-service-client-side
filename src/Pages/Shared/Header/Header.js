@@ -18,6 +18,9 @@ const Header = () => {
       <li>
         <Link to="/">Home</Link>
       </li>
+      <li>
+        <Link to="/allServices">All Services</Link>
+      </li>
 
       {user?.email ? (
         <>
@@ -69,24 +72,26 @@ const Header = () => {
             {menuItem}
           </ul>
         </div>
-        <a href="/" className="btn btn-ghost normal-case text-xl">
+        <Link to="/" className="btn btn-ghost normal-case text-xl">
           <img className="w-12" src="logo.png" alt="" />
           Cleaning Service
-        </a>
+        </Link>
       </div>
       <div className="navbar-center hidden lg:flex">
-        <ul className="menu menu-horizontal p-0">{menuItem}</ul>
+        <ul className="menu menu-horizontal p-0 font-semibold">{menuItem}</ul>
       </div>
       <div className="navbar-end">
-        
         {user?.uid ? (
           <>
+            <p>{user?.displayName}</p>
             <div className="tooltip tooltip-left" data-tip={user?.displayName}>
               <button className="">
                 <div className="avatar">
                   <div className="w-16 rounded-full">
                     {user?.photoURL ? (
-                      <img src={user?.photoURL} alt=''/>
+                      <>
+                        <img src={user?.photoURL} alt="" />
+                      </>
                     ) : (
                       <p>noname</p>
                     )}

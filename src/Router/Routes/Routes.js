@@ -1,14 +1,15 @@
-import { createBrowserRouter } from 'react-router-dom';
-import Main from '../../Layout/Main';
-import AddService from '../../Pages/AddService/AddService';
-import Blog from '../../Pages/Blog/Blog';
-import Home from '../../Pages/Home/Home/Home';
-import Login from '../../Pages/Login/Login';
-import PageNotFound from '../../Pages/PageNotFound/PageNotFound';
-import Review from '../../Pages/Review/Review';
-import ServiceDetails from '../../Pages/ServiceDetails/ServiceDetails';
-import SignUp from '../../Pages/SignUp/SignUp';
-import PrivateRoute from '../PrivateRoute/PrivateRoute';
+import { createBrowserRouter } from "react-router-dom";
+import Main from "../../Layout/Main";
+import AddService from "../../Pages/AddService/AddService";
+import Blog from "../../Pages/Blog/Blog";
+import Home from "../../Pages/Home/Home/Home";
+import AllServices from "../../Pages/Home/Services/AllServices";
+import Login from "../../Pages/Login/Login";
+import PageNotFound from "../../Pages/PageNotFound/PageNotFound";
+import Review from "../../Pages/Review/Review";
+import ServiceDetails from "../../Pages/ServiceDetails/ServiceDetails";
+import SignUp from "../../Pages/SignUp/SignUp";
+import PrivateRoute from "../PrivateRoute/PrivateRoute";
 const router = createBrowserRouter([
   {
     path: "/",
@@ -17,6 +18,10 @@ const router = createBrowserRouter([
       {
         path: "/",
         element: <Home></Home>,
+      },
+      {
+        path: "/allServices",
+        element: <AllServices></AllServices>,
       },
       {
         path: "/login",
