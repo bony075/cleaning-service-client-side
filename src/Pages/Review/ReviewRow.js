@@ -14,13 +14,6 @@ const ReviewRow = ({ review, handleDelete }) => {
   return (
     <div>
       <tr>
-        <th>
-          <label>
-            <button onClick={() => handleDelete(_id)} className="btn btn-ghost">
-              X
-            </button>
-          </label>
-        </th>
         <td>
           <div className="flex items-center space-x-3">
             <div className="avatar">
@@ -52,6 +45,16 @@ const ReviewRow = ({ review, handleDelete }) => {
             >
               {status ? status : "pending"}
             </button> */}
+          <th>
+            <label>
+              <button
+                onClick={() => handleDelete(_id)}
+                className="btn btn-ghost"
+              >
+                DELETE
+              </button>
+            </label>
+          </th>
         </th>
       </tr>
     </div>

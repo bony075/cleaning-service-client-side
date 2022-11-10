@@ -9,12 +9,13 @@ const ServiceDetails = () => {
   const { user } = useContext(AuthContext);
   useTitle("Service Details");
 
-  const handlePlaceOrder = (event) => {
+  const handleSetReview = (event) => {
     event.preventDefault();
     const form = event.target;
-    const name = `${form.firstName.value} ${form.lastName.value}`;
+    // const name = `${form.firstName.value} ${form.lastName.value}`;
+    const name = user?.name||"No name";
     const email = user?.email || "unregistered";
-    const phone = form.phone.value;
+    // const phone = form.phone.value;
     const message = form.message.value;
 
     const review = {
@@ -23,7 +24,7 @@ const ServiceDetails = () => {
       price,
       customer: name,
       email,
-      phone,
+      // phone,
       message,
     };
 
@@ -62,54 +63,68 @@ const ServiceDetails = () => {
       {/* <div>
               <Review></Review>
           </div> */}
-      <div>
-        <form onSubmit={handlePlaceOrder}>
-          <h2 className="text-4xl">You are about to order: {title}</h2>
-          <h4 className="text-3xl">Price: {price}</h4>
-          <div className="grid grid-cols-1 lg:grid-cols-2 gap-4">
-            <input
-              name="firstName"
-              type="text"
-              placeholder="First Name"
-              className="input input-ghost w-full  input-bordered"
-            />
-            <input
+      <div className="my-8">
+        
+        {user?.uid ? (
+          <>
+            <form onSubmit={handleSetReview}>
+              {/* <h2 className="text-4xl">You are about to order: {title}</h2>
+          <h4 className="text-3xl">Price: {price}</h4> */}
+              <div className="grid grid-cols-1 lg:grid-cols-2 gap-4 mb-4">
+                <input
+                  name="name"
+                  type="text"
+                  placeholder="First Name"
+                  defaultValue={user?.displayName}
+                  className="input input-ghost w-full  input-bordered"
+                  readOnly
+                />
+                {/* <input
               name="lastName"
               type="text"
               placeholder="Last Name"
               className="input input-ghost w-full  input-bordered"
-            />
-            <input
+            /> */}
+                {/* <input
               name="phone"
               type="text"
               placeholder="Your Phone"
               className="input input-ghost w-full  input-bordered"
               required
-            />
-            <input
-              name="email"
-              type="text"
-              placeholder="Your email"
-              defaultValue={user?.email}
-              className="input input-ghost w-full  input-bordered"
-              readOnly
-            />
-          </div>
-          <textarea
-            name="message"
-            className="textarea textarea-bordered h-24 w-full"
-            placeholder="Your Message"
-            required
-          ></textarea>
+            /> */}
+                <input
+                  name="email"
+                  type="text"
+                  placeholder="Your email"
+                  defaultValue={user?.email}
+                  className="input input-ghost w-full  input-bordered"
+                  readOnly
+                />
+              </div>
+              <textarea
+                name="message"
+                className="textarea textarea-bordered h-24 w-full"
+                placeholder="Your Message"
+                required
+              ></textarea>
 
-          {user?.email ? (
-            <input className="btn" type="submit" value="Review" />
-          ) : (
+              {user?.email ? (
+                <input className="btn" type="submit" value="Review" />
+              ) : (
+                <NavLink className="btn btn-primary" to="/login">
+                  Login
+                </NavLink>
+              )}
+            </form>
+          </>
+        ) : (
+            <>
+              <p>Please Login to Submit review...  </p>
             <NavLink className="btn btn-primary" to="/login">
               Login
             </NavLink>
-          )}
-        </form>
+          </>
+        )}
       </div>
     </div>
   );

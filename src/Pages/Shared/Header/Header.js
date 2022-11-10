@@ -84,7 +84,8 @@ const Header = () => {
         {user?.uid ? (
           <>
             <p>{user?.displayName}</p>
-            <div className="tooltip tooltip-left" data-tip={user?.displayName}>
+            <div >
+              {/* <>className="tooltip tooltip-left" data-tip={user?.displayName}></> */}
               <button className="">
                 <div className="avatar">
                   <div className="w-16 rounded-full">

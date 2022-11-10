@@ -28,7 +28,7 @@ const Review = () => {
   //delete
   const handleDelete = (id) => {
     const proceed = window.confirm(
-      "Are you sure, you want to cancel this order"
+      "Are you sure, you want to delete this service"
     );
     if (proceed) {
       fetch(`http://localhost:5000/review/${id}`, {
@@ -46,18 +46,18 @@ const Review = () => {
   };
 
   return (
-    <div>
+    <div className='text-center'>
       <h2 className="text-5xl">You have {review.length} review</h2>
       <div className="overflow-x-auto w-full">
         <table className="table w-full">
           <thead>
-            <tr>
+            {/* <tr>
               <th></th>
               <th>Name</th>
               <th>Job</th>
               <th>Favorite Color</th>
               <th></th>
-            </tr>
+            </tr> */}
           </thead>
           <tbody>
             {review.map((review) => (
