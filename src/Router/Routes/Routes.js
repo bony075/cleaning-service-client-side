@@ -8,6 +8,7 @@ import PageNotFound from '../../Pages/PageNotFound/PageNotFound';
 import Review from '../../Pages/Review/Review';
 import ServiceDetails from '../../Pages/ServiceDetails/ServiceDetails';
 import SignUp from '../../Pages/SignUp/SignUp';
+import PrivateRoute from '../PrivateRoute/PrivateRoute';
 const router = createBrowserRouter([
   {
     path: "/",
@@ -42,7 +43,11 @@ const router = createBrowserRouter([
       },
       {
         path: "/review",
-        element: <Review></Review>,
+        element: (
+          <PrivateRoute>
+            <Review></Review>
+          </PrivateRoute>
+        ),
       },
     ],
   },

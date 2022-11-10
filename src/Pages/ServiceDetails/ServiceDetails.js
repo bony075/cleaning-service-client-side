@@ -1,5 +1,5 @@
 import React, { useContext } from "react";
-import { useLoaderData } from "react-router-dom";
+import { NavLink, useLoaderData } from "react-router-dom";
 import { AuthContext } from "../../context/AuthProvider/AuthProvider";
 import useTitle from "../../Hook/useTitle";
 import Review from "../Review/Review";
@@ -7,7 +7,7 @@ import Review from "../Review/Review";
 const ServiceDetails = () => {
   const { _id, title, price, img, description } = useLoaderData();
   const { user } = useContext(AuthContext);
-  useTitle('Service Details');
+  useTitle("Service Details");
 
   const handlePlaceOrder = (event) => {
     event.preventDefault();
@@ -31,7 +31,6 @@ const ServiceDetails = () => {
       method: "POST",
       headers: {
         "content-type": "application/json",
-        
       },
       body: JSON.stringify(review),
     })
@@ -59,8 +58,8 @@ const ServiceDetails = () => {
             <div className="card-actions justify-end"></div>
           </div>
         </div>
-          </div>
-          {/* <div>
+      </div>
+      {/* <div>
               <Review></Review>
           </div> */}
       <div>
@@ -103,7 +102,13 @@ const ServiceDetails = () => {
             required
           ></textarea>
 
-          <input className="btn" type="submit" value="Review" />
+          {user?.email ? (
+            <input className="btn" type="submit" value="Review" />
+          ) : (
+            <NavLink className="btn btn-primary" to="/login">
+              Login
+            </NavLink>
+          )}
         </form>
       </div>
     </div>
