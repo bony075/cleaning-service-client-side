@@ -7,7 +7,7 @@ In the project directory, you can run:
 ### `LIVE WEBSITE LINK`
 
 Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+Open [https://cleaning-service-b60b5.web.app/](https://cleaning-service-b60b5.web.app/) to view it in your browser.
 
 ### Systems Functionality
 
